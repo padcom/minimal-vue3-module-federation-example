@@ -2,7 +2,7 @@
   <div>
     <label>Show UI <input type="checkbox" v-model="showUI" /></label>
     <div v-if="showUI">
-      <HelloWorld msg="message" />
+      <HelloWorld msg="message" @click="testme" />
     </div>
   </div>
 </template>
@@ -36,6 +36,24 @@ export default {
     return {
       message: 'Vue.js application',
       showUI: false,
+    }
+  },
+  methods: {
+    async testme() {
+      console.log('Testme!')
+
+      function *mygen() {
+        for (let i = 0; i < 10; i++) {
+          yield i
+        }
+      }
+
+      const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+      for (const index of mygen()) {
+        await sleep(200)
+        console.log('index:', index)
+      }
     }
   },
 }
