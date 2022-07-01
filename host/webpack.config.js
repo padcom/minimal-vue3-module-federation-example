@@ -4,6 +4,7 @@ const { ModuleFederationPlugin } = require('webpack').container
 const { dependencies } = require('./package.json')
 
 module.exports = {
+  node: false,
   entry: './src/main.js',
   module: {
     rules: [
